@@ -4,6 +4,6 @@ export class Tplace{
   id: number;
   name: string;
   stars: number;
-  locatable:Locatable;
+
 
 }

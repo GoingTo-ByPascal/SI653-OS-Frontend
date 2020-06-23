@@ -3,7 +3,7 @@ import {Tplace} from "../model/tplace";
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
-import {User} from "../model/user";
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +23,14 @@ export class TplaceService {
 
   }
 
-  getTplace(id):Observable<Tplace>{
-    return this.http.get<Tplace>(`${this.urlEndPoint}/${id}`)
+  getTplace():Observable<Tplace>{
+    return this.http.get<Tplace>(`${this.urlEndPoint}/${this.placeid}`)
   }
 
+  getAllCitiesByPlaceId(cityid):Observable<Tplace[]>{
+    const url='http://localhost:8080/api/cities'
+    return this.http.get<Tplace[]>(`${url}/`+cityid+`/places`)
+  }
 
 
 

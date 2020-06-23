@@ -2,11 +2,11 @@
 
   <th style="padding-right: 200px">
     <tr>
-      <th >
+
         <div align="center" style="position: relative; bottom: 50px">
           <img width="200px" height="200px" src="assets/mapa.png" >
         </div>
-      </th>
+
     </tr>
     <tr>
       <label >Filter</label>
@@ -14,11 +14,23 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Country:</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
+        <select class="custom-select" id="inputGroupSelect01" >
           <option selected>Choose...</option>
-          <option *ngFor="let country of country" value="1">{{country.fullName}}</option>
+          <option  value="1" *ngFor="let country of country">{{country.fullName}}</option>
         </select>
       </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">City:</label>
+        </div>
+        <select class="custom-select"  (change)="resultados($event)">
+          <option selected>Choose...</option>
+          <option  *ngFor="let city of city" [value]="city.id" >{{city.name}} </option>
+
+        </select>
+
+      </div>
+
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect02">Category:</label>
@@ -59,7 +71,7 @@
         Results
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"  routerLink="/place" *ngFor=" let tplace of tplace" (click)="tplaceService.placeid = tplace.id">
+        <li class="list-group-item"  routerLink="/place" *ngFor=" let tplace of tplace" (click)="placeService.placeid = tplace.id">
          <table>
            <th>{{tplace.name}} </th>
            <th>| Stars:{{tplace.stars}}</th>

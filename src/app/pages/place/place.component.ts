@@ -15,17 +15,20 @@ import {LocatableService} from "../../services/locatable.service";
 export class PlaceComponent implements OnInit {
   tplaceid: number = this.tplaceService.placeid;
 
-  tplace:Tplace;
-  locatable:Locatable=this.tplace.locatable;
+  place:Tplace;
+  locatable:Locatable;
   tip:Tip[];
-  constructor(private tipService:TipService, public tplaceService:TplaceService, private locatableService: LocatableService) { }
+  constructor(private tipService:TipService, public tplaceService:TplaceService, public locatableService: LocatableService) { }
 
   ngOnInit(): void {
     this.tipService.getTips().subscribe(
       (tip)=> this.tip=tip
     );
-    this.tplaceService.getTplace(this.tplaceid).subscribe(
-      tplace=> this.tplace=tplace
+    this.tplaceService.getTplace().subscribe(
+      tplace=> this.place=tplace
+    );
+    this.locatableService.getLocatable((this.tplaceid+6)).subscribe(
+      locatable=> this.locatable=locatable
     );
 
 
