@@ -5,6 +5,7 @@ import {Tplace} from "../../model/tplace";
 import {TplaceService} from "../../services/tplace.service";
 import {Locatable} from "../../model/locatable";
 import {LocatableService} from "../../services/locatable.service";
+import {FavouriteService} from "../../services/favourite.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class PlaceComponent implements OnInit {
   place:Tplace;
   locatable:Locatable;
   tip:Tip[];
-  constructor(private tipService:TipService, public tplaceService:TplaceService, public locatableService: LocatableService) { }
+  constructor(public tipService:TipService, public tplaceService:TplaceService, public locatableService: LocatableService,public favouriteService:FavouriteService) { }
 
   ngOnInit(): void {
     this.tipService.getTips().subscribe(
@@ -29,10 +30,14 @@ export class PlaceComponent implements OnInit {
     );
     this.locatableService.getLocatable((this.tplaceid+6)).subscribe(
       locatable=> this.locatable=locatable
-    );
-
+    )
+    this.favouriteService.save(4,7).subscribe(
+      city=>console.log(city)
+    )
 
   }
+
+
 
 
 }

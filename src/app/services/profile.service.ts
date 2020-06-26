@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class ProfileService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/profiles';
+  private urlEndPoint:string ='http://localhost:8080/api/user_profiles';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})

@@ -4,6 +4,7 @@ import {Observable, of} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {User} from "../model/user";
+import {City} from "../model/city";
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,12 @@ export class LocatableService {
   getLocatable(id):Observable<Locatable>{
     return this.http.get<Locatable>(`${this.urlEndPoint}/${id}`)
   }
+
+  getFavourites(userid): Observable<Locatable[]> {
+    const url = 'http://localhost:8080/api/users/'
+    return this.http.get<Locatable[]>(`${url}`+userid+`/locatables`)
+
+  }
+
+
   }

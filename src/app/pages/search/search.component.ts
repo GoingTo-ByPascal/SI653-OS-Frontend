@@ -11,6 +11,7 @@ import {Tplace} from "../../model/tplace";
 import {TplaceService} from "../../services/tplace.service";
 import {City} from "../../model/city";
 import {CityService} from "../../services/city.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-search',
@@ -27,11 +28,12 @@ export class SearchComponent implements OnInit {
   tplace: Tplace[];
 
   //VARIABLES FILTRO
-  selectedcity:number;
-  prueba:string="caca";
+  selectedcity:number = 0;
+  selectedcountry:number = 0;
+  selectedcategory:number = 0;
 
-
-  constructor(private categoryService:CategoryService, private countryService:CountryService, public cityService:CityService, private currencyService:CurrencyService, private  languageService:LanguageService, public placeService: TplaceService) { }
+  constructor(private categoryService:CategoryService, private countryService:CountryService, public cityService:CityService,
+              private currencyService:CurrencyService, private  languageService:LanguageService, public placeService: TplaceService) { }
 
 
   ngOnInit(){
@@ -47,21 +49,41 @@ export class SearchComponent implements OnInit {
     this.languageService.getLanguages().subscribe(
       (language)=> this.language = language
     );
-
-    this.cityService.getCities().subscribe(
-      (city)=> this.city=city
-    );
-
-    this.placeService.getTplaces().subscribe(
-      (tplace)=> this.tplace=tplace
-    );
+    /*this.placeService.getTplaces().subscribe(
+      tplace=>this.tplace=tplace
+    )*/
   }
 
-  resultados(event:any){
+  resultados(){
+
+    if (this.selectedcity!=null && this.selectedcategory!=null){
+      this.placeService.Filtro(this.selectedcategory, this.selectedcity).subscribe(
+        tplace=>this.tplace=tplace
+      );
+    }
+  }
+
+  resultadosfiltrocity(event: any){
     this.selectedcity=event.target.value;
     this.placeService.getAllCitiesByPlaceId(this.selectedcity).subscribe(
-      (tplace)=> this.tplace=tplace
+      tplace=>this.tplace=tplace
+    )
+  }
+
+  resultadosfiltrocategory(event: any){
+    this.selectedcategory=event.target.value;
+    this.placeService.getallplacesbycategoryid(this.selectedcategory).subscribe(
+      tplace=>this.tplace=tplace
+    )
+  }
+
+
+  resultadoscity(event:any){
+  this.selectedcountry=event.target.value
+    this.cityService.getAllCitiesByCountryId(this.selectedcountry).subscribe(
+      (city)=> this.city=city
     );
   }
+
 
 }

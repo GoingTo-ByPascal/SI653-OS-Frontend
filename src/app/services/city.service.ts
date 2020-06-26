@@ -3,6 +3,7 @@ import { City} from "../model/city";
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
+import {Tplace} from "../model/tplace";
 
 
 @Injectable({
@@ -21,6 +22,11 @@ export class CityService {
 
     return this.http.get<City[]>(this.urlEndPoint);
 
+  }
+
+  getAllCitiesByCountryId(countryid):Observable<City[]>{
+    const url='http://localhost:8080/api/countries'
+    return this.http.get<City[]>(`${url}/`+countryid+`/cities`)
   }
 
 

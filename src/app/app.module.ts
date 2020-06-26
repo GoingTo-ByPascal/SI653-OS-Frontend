@@ -13,15 +13,17 @@ import { SearchComponent} from "./pages/search/search.component";
 import { PlaceComponent } from './pages/place/place.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { FavouritesComponent } from './pages/favourites/favourites.component';
 
 
 
 const routes: Routes =[
-  {path:'',redirectTo:'clientes',pathMatch:'full'},
+
   {path:'search',component:SearchComponent},
   {path:'place',component:PlaceComponent},
   {path:'results',component:ResultsComponent},
   {path:'profile',component:ProfileComponent},
+  {path:'favourites',component:FavouritesComponent},
 
 ];
 @NgModule({
@@ -33,6 +35,7 @@ const routes: Routes =[
     PlaceComponent,
     ResultsComponent,
     ProfileComponent,
+    FavouritesComponent,
 
   ],
   imports: [

@@ -10,7 +10,9 @@ import {map} from "rxjs/operators";
 })
 
 export class TplaceService {
-  placeid: number;
+
+  placeid:number;
+
   private urlEndPoint:string ='http://localhost:8080/api/places';
   constructor(private http:HttpClient) { }
 
@@ -32,6 +34,20 @@ export class TplaceService {
     return this.http.get<Tplace[]>(`${url}/`+cityid+`/places`)
   }
 
+  Filtro(categoryid, cityid):Observable<Tplace[]>{
+    const url= 'http://localhost:8080/api/categories'
+    return this.http.get<Tplace[]>(`${url}/`+categoryid+`/cities/`+cityid+`/places`)
 
+  }
+
+  getallplacesbycategoryid(categoryid):Observable<Tplace[]>{
+    const url= 'http://localhost:8080/api/categories'
+    return this.http.get<Tplace[]>(`${url}/`+categoryid+`/places`)
+  }
+
+  getplacebylocatableid(locatableid):Observable<Tplace>{
+    const url= 'http://localhost:8080/api/locatables'
+    return this.http.get<Tplace>(`${url}/`+locatableid+`/places`)
+  }
 
 }

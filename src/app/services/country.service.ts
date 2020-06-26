@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class CountryService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/countries';
+  private urlEndPoint:string = 'http://localhost:8080/api/countries';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
