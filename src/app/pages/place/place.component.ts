@@ -31,11 +31,10 @@ export class PlaceComponent implements OnInit {
     this.locatableService.getLocatable((this.tplaceid+6)).subscribe(
       locatable=> this.locatable=locatable
     )
-    this.favouriteService.save(4,7).subscribe(
-      city=>console.log(city)
-    )
+
 
   }
+
 
 
 

@@ -12,6 +12,7 @@ import {Locatable} from "../model/locatable";
 export class FavouriteService {
 
   private urlEndPoint: string = 'http://localhost:8080/api/favourites';
+  favourite:Favourite;
 
   constructor(private http: HttpClient) {
   }
@@ -27,9 +28,9 @@ export class FavouriteService {
     return this.http.get<Locatable[]>(`${url}/` + userid + `/locatables`)
   }
 
-  save(userid:number, locatableid:number): Observable<Favourite> {
+  save(): Observable<Favourite> {
     const url = 'http://localhost:8080/api/users'
-    return this.http.post<Favourite>(`${url}/`+userid+`/locatables/`+locatableid, null)
+    return this.http.post<Favourite>(url, this.favourite)
   }
 
 

@@ -13,12 +13,12 @@ import {Profile} from "../../model/profile";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile:Profile;
+  profile:User;
   constructor(private userService:UserService, private profileService:ProfileService) { }
 
   ngOnInit(){
 
-    this.profileService.getUserprofile(1).subscribe(
+    this.userService.getUser(1).subscribe(
       profile=>this.profile=profile
     )
 

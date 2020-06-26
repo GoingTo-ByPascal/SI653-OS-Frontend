@@ -19,7 +19,8 @@ export class FavouritesComponent implements OnInit {
   tplace:Tplace;
 
 
-  constructor(private locatableService:LocatableService, public tplaceService:TplaceService) { }
+
+  constructor(private locatableService:LocatableService, public tplaceService:TplaceService, private favouriteService: FavouriteService) { }
 
   ngOnInit() {
     this.locatableService.getFavourites(4).subscribe(
@@ -28,6 +29,7 @@ export class FavouritesComponent implements OnInit {
     this.tplaceService.getTplaces().subscribe(
       tplaces=>this.tplaces=tplaces
     )
+    this.post()
   }
 
   mostrarfavoritos(id:number){
@@ -46,6 +48,13 @@ export class FavouritesComponent implements OnInit {
         this.tplaceService.placeid=this.tplaces[i].id;
       }
     }
+  }
 
+
+  post(){
+    this.favouriteService.favourite.description="caca"
+    this.favouriteService.favourite.locatableId=1
+    this.favouriteService.favourite.userId=4
+    this.favouriteService.save().subscribe()
   }
 }
