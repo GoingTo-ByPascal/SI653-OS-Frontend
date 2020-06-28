@@ -5,6 +5,8 @@ import {LocatableService} from "../../services/locatable.service";
 import {Locatable} from "../../model/locatable";
 import {ProfileService} from "../../services/profile.service";
 import {Profile} from "../../model/profile";
+import {CountryService} from "../../services/country.service";
+import {Country} from "../../model/country";
 
 
 @Component({
@@ -13,15 +15,26 @@ import {Profile} from "../../model/profile";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile:User;
-  constructor(private userService:UserService, private profileService:ProfileService) { }
+  user:User;
+  profile:Profile= new Profile();
+  country: Country= new Country();
+  constructor(private userService:UserService, public profileService:ProfileService, public countryService:CountryService) { }
 
   ngOnInit(){
 
-    this.userService.getUser(1).subscribe(
+    this.userService.getUser(4).subscribe(
+      user=>this.user=user
+    );
+    this.profileService.getUserprofilebyUserid(4).subscribe(
       profile=>this.profile=profile
     )
 
   }
 
+
+  loadcountry(id){
+    this.countryService.getcountrybyid(id).subscribe(
+      country=>this.country=country
+    )
+  }
 }

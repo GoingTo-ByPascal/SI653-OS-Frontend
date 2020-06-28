@@ -12,7 +12,7 @@ import {Locatable} from "../model/locatable";
 export class FavouriteService {
 
   private urlEndPoint: string = 'http://localhost:8080/api/favourites';
-  favourite:Favourite;
+  favourite: Favourite=new Favourite();
 
   constructor(private http: HttpClient) {
   }
@@ -23,15 +23,21 @@ export class FavouriteService {
     return this.http.get<Favourite[]>(`${this.urlEndPoint}`)
   }
 
-  getFavourites(userid): Observable<Locatable[]> {
+
+  getFavouritesbyuserid(userid): Observable<Favourite[]> {
     const url = 'http://localhost:8080/api/users'
-    return this.http.get<Locatable[]>(`${url}/` + userid + `/locatables`)
+    return this.http.get<Favourite[]>(`${url}/` + userid + `/favourites`)
   }
 
   save(): Observable<Favourite> {
     const url = 'http://localhost:8080/api/users'
-    return this.http.post<Favourite>(url, this.favourite)
+
+    return this.http.post<Favourite>(`${url}/`+this.favourite.userId+`/locatables/`+this.favourite.locatableId, this.favourite,{headers:this.httpHeaders})
   }
 
+  delete(locatableid): Observable<Favourite>
+  {
+    return this.http.delete<Favourite>('http://localhost:8080/api/users/' + 4 + '/locatables/' + locatableid, {headers: this.httpHeaders});
+  }
 
 }

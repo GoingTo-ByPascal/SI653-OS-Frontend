@@ -25,6 +25,10 @@ export class CountryService {
 
   }
 
+  getcountrybyid(id):Observable<Country>{
+    return this.http.get<Country>(`${this.urlEndPoint}/${id}`);
+  }
+
 
 
 

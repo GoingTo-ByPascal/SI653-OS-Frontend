@@ -27,8 +27,9 @@ export class ProfileService {
 
 
 
-  getUserprofile(id):Observable<Profile>{
-    return this.http.get<Profile>(`${this.urlEndPoint}/${id}`)
+  getUserprofilebyUserid(id:number):Observable<Profile>{
+    const url='http://localhost:8080/api/users'
+    return this.http.get<Profile>(`${url}/`+id+`/user_profiles`)
   }
 
 

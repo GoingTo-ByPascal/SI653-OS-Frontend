@@ -6,8 +6,8 @@ export class Profile {
   name: string;
   surname: string;
   birthdate: string;
-  gender: number;
-  user:User;
-  country:Country;
+  gender: string;
+  userId:number;
+  countryId:number;
 
 }

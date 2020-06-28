@@ -17,7 +17,8 @@ export class FavouritesComponent implements OnInit {
   locatable:Locatable[];
   locatableid:number;
   tplace:Tplace;
-
+  favourites:Favourite[];
+  favourite:Favourite
 
 
   constructor(private locatableService:LocatableService, public tplaceService:TplaceService, private favouriteService: FavouriteService) { }
@@ -29,7 +30,9 @@ export class FavouritesComponent implements OnInit {
     this.tplaceService.getTplaces().subscribe(
       tplaces=>this.tplaces=tplaces
     )
-    this.post()
+    this.favouriteService.getFavouritesbyuserid(4).subscribe(
+      favourite=>this.favourites=favourite
+    )
   }
 
   mostrarfavoritos(id:number){
@@ -39,6 +42,13 @@ export class FavouritesComponent implements OnInit {
         this.tplace=this.tplaces[i];
       }
     }
+    for(let i=0;i<this.favourites.length;i++){
+      if(this.favourites[i].locatableId==id){
+        this.favourite=this.favourites[i];
+      }
+    }
+
+
     }
 
   click(id:number){
@@ -50,11 +60,9 @@ export class FavouritesComponent implements OnInit {
     }
   }
 
-
-  post(){
-    this.favouriteService.favourite.description="caca"
-    this.favouriteService.favourite.locatableId=1
-    this.favouriteService.favourite.userId=4
-    this.favouriteService.save().subscribe()
+  delete(id){
+    this.favouriteService.delete(id).subscribe()
   }
+
+
 }
