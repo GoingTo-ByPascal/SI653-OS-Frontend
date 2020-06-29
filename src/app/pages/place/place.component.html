@@ -1,17 +1,38 @@
-<div align="center" style="position: relative; padding-top: 50px">
+<div align="center" style="position: relative; padding-top: 50px; padding-bottom: 50px">
   <h1 style="font-weight: bold">{{place.name}}</h1>
-  <button type="button" class="btn btn-dark" (click)="post()">{{button}}</button>
-</div>
-<div style="position: relative;padding-bottom: 50px; padding-top: 50px;">
-  <table>
-    <th align="center" style="position: relative;padding-left: 410px">
-      <div align="center">
-        <label>Add a description</label>
+  <button type="button" class="btn btn-dark" (click)="modalref=modal.open(description)">{{button}}</button>
+  <ng-template #description >
+    <div class="modal-header">
+      <h5 class="modal-title">Add Favourite</h5>
+    </div>
+    <div class="modal-body">
+      <div class="card" style="width: 30rem;position: relative;" >
+        <div class="card-header" align="left">
+          <table>
+            <tr >
+              <p style="font-weight: bold;">{{place.name}}</p>
+            </tr>
+          </table>
+        </div>
+        <ul class="list-group list-group-flush">
+          <div>
+            <li class="list-group-item" >
+              <table>
+                <tr >
+                  <div style="padding-bottom: 40px;padding-top: 40px" align="center">
+                    <textarea cols="57" rows="5" (keyup)="getdescription($event)"></textarea>
+                  </div>
+                </tr>
+              </table>
+            </li>
+          </div>
+        </ul>
       </div>
-      <input type="text" class="form-control" [(ngModel)]="favouriteService.favourite.description">
-    </th>
-  </table>
-
+    </div>
+    <div class="modal-footer" align="center">
+      <button type="button" class="btn btn-light" (click)="post();modalref.close()">Post</button>
+    </div>
+  </ng-template>
 </div>
 <table>
   <th>
@@ -63,26 +84,98 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item" *ngFor="let tip of tip" >{{tip.text}}</li>
+        <button type="button" class="btn btn-dark" (click)="modalref=modal.open(tipmodal)">Create</button>
+        <ng-template #tipmodal >
+          <div class="modal-header">
+            <h5 class="modal-title">New Tip</h5>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 30rem;position: relative;" >
+              <div class="card-header" align="left">
+                <table>{{mostrarusuario()}}
+                  <tr >
+                    <p style="font-weight: bold;">{{actualprofile.name+' '+actualprofile.surname}}</p>
+                  </tr>
+                </table>
+              </div>
+              <ul class="list-group list-group-flush">
+                <div>
+                  <li class="list-group-item" >
+                    <table>
+                      <tr >
+                        <div style="padding-bottom: 40px;padding-top: 40px" align="center">
+                          <textarea cols="57" rows="5" (keyup)="gettip($event)"></textarea>
+                        </div>
+                      </tr>
+                    </table>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer" align="center">
+            <button type="button" class="btn btn-light" (click)="posttip();modalref.close()">Post</button>
+          </div>
+        </ng-template>
       </ul>
     </div>
   </th>
 
 </table>
 <div align="center" style="position: relative; padding: 100px">
-  <button type="button" class="btn btn-dark" style="font-weight: bold" routerLink="/results">GoingTo!</button>
+  <button type="button" class="btn" style="font-weight: bold; background-color: #ff5454; color: white" routerLink="/results">
+    GoingTo!
+  </button>
 </div>
 <div align="center" style="position: relative;padding-bottom: 100px">
   <div align="center">
     <h1 style="font-weight: bold" >Reviews</h1>
-    <button type="button" class="btn btn-dark" >Post</button>
+    <button type="button" class="btn btn-dark" (click)="modalref=modal.open(template)">Post</button>
     <!--MODAL-->
+    <ng-template #template >
+      <div class="modal-header">
+        <h5 class="modal-title">New Review</h5>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 30rem;position: relative;" >
+          <div class="card-header" align="left">
+            <table>{{mostrarusuario()}}
+              <tr >
+                <p style="font-weight: bold;">{{actualprofile.name+' '+actualprofile.surname}}</p>
+              </tr>
+              <tr >
+                <th>
+                  <p>{{place.name}}</p>
+                </th>
+              </tr>
+            </table>
+          </div>
+          <ul class="list-group list-group-flush">
+            <div>
+              <li class="list-group-item" >
+                <table>
+                  <tr >
+                    <div style="padding-bottom: 40px;padding-top: 40px" align="center">
+                      <textarea cols="57" rows="10" (keyup)="getcomment($event)"></textarea>
+                    </div>
+                  </tr>
+                </table>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer" align="center">
+        <button type="button" class="btn btn-light" (click)="postreview();modalref.close()">Post</button>
+      </div>
+    </ng-template>
   </div>
 
   <div class="card" style="width: 30rem;position: relative; margin-top: 50px;margin-bottom: 50px" *ngFor="let review of review">{{mostrarreviews(review.userId)}}
     <div class="card-header" align="left">
       <table>
         <tr >
-          <p style="font-weight: bold;">{{profile.name}}</p>
+          <p style="font-weight: bold;">{{profile.name+' '+profile.surname}}</p>
         </tr>
         <tr >
           <th>

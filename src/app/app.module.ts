@@ -14,6 +14,7 @@ import { PlaceComponent } from './pages/place/place.component';
 import { ResultsComponent } from './pages/results/results.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FavouritesComponent } from './pages/favourites/favourites.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes =[
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    NgbModule,
 
   ],
 

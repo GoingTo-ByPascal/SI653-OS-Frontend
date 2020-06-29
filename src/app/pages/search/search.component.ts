@@ -49,9 +49,7 @@ export class SearchComponent implements OnInit {
     this.languageService.getLanguages().subscribe(
       (language)=> this.language = language
     );
-    this.placeService.getTplaces().subscribe(
-      tplace=>this.tplace=tplace
-    )
+
   }
 
   resultados(){

@@ -9,7 +9,7 @@ import {map} from "rxjs/operators";
 })
 
 export class UserService {
-
+  userid:number=4;
   private urlEndPoint:string ='http://localhost:8080/api/users';
   constructor(private http:HttpClient) { }
 

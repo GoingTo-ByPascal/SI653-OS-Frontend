@@ -14,7 +14,8 @@ import {User} from "../../model/user";
 import {UserService} from "../../services/user.service";
 import {Profile} from "../../model/profile";
 import {ProfileService} from "../../services/profile.service";
-
+import {NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-place',
@@ -30,12 +31,15 @@ export class PlaceComponent implements OnInit {
   locatable:Locatable;
   tip:Tip[];
   review:Review[];
+  actualprofile:Profile;
   profile: Profile;
   profiles:Profile[];
+  modalref:NgbModalRef
+
   constructor(public tipService:TipService, public tplaceService:TplaceService,
               public locatableService: LocatableService,public favouriteService:FavouriteService,
-              private router:Router, private reviewService:ReviewService,
-              private profileService: ProfileService) { }
+              private router:Router, public reviewService:ReviewService,
+              private profileService: ProfileService, public modal: NgbModal, public userService:UserService) { }
 
   ngOnInit(): void {
     this.tipService.getTips().subscribe(
@@ -79,5 +83,38 @@ export class PlaceComponent implements OnInit {
 
   }
 
+  mostrarusuario(){
+    for(let i=0;i<this.profiles.length;i++){
+      if(this.profiles[i].userId==this.userService.userid){
+        this.actualprofile=this.profiles[i];
+      }
+    }
+  }
 
+  postreview(){
+    this.reviewService.review.stars=0
+    this.reviewService.review.userId=this.actualprofile.userId
+    this.reviewService.review.locatableId=this.locatable.id;
+    this.reviewService.postreview().subscribe(
+      response => this.router.navigate(['reviews'])
+    );
+  }
+
+  posttip(){
+    this.tipService.tip.locatableId=this.locatable.id
+    this.tipService.tip.userId=this.actualprofile.id
+    this.tipService.posttip().subscribe(
+      response => this.router.navigate(['tips'])
+    );
+  }
+
+  getcomment(comment){
+    this.reviewService.review.comment=comment.target.value
+  }
+  gettip(tip){
+    this.tipService.tip.text=tip.target.value
+  }
+  getdescription(description){
+    this.favouriteService.favourite.description=description.target.value;
+  }
 }
