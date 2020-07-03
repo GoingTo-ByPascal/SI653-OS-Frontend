@@ -67,14 +67,14 @@
               </div>
             </tr>
             <tr>
-              <p>Stars: 4</p>
+              <p>Stars: {{review.stars}}</p>
             </tr>
             <tr>
               <th>
-                <button type="button" class="btn btn-dark" style="position: relative;left: 150px" (click)="modalref=modal.open(edit);getreview(review)">Edit</button>
+                <button type="button" class="btn btn-dark" style="position: relative;" (click)="modalref=modal.open(edit);getreview(review)">Edit</button>
               </th>
               <th>
-                <button type="button" class="btn btn-dark" style="position: relative; right: 150px"  (click)="deletereview(review.id)" routerLink="/search">Delete</button>
+                <button type="button" class="btn btn-dark" style="position: relative;"  (click)="deletereview(review.id)" routerLink="/search">Delete</button>
               </th>
             </tr>
           </table>

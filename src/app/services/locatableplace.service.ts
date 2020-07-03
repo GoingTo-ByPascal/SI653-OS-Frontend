@@ -12,7 +12,7 @@ import {User} from "../model/user";
 
 export class LocatableplaceService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/locatables';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/locatables';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})

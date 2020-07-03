@@ -12,7 +12,7 @@ import {City} from "../model/city";
 
 export class LocatableService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/locatables';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/locatables';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
@@ -27,7 +27,7 @@ export class LocatableService {
   }
 
   getFavourites(userid): Observable<Locatable[]> {
-    const url = 'http://localhost:8080/api/users/'
+    const url = 'https://goingto-open.azurewebsites.net/api/users/'
     return this.http.get<Locatable[]>(`${url}`+userid+`/locatables`)
 
   }

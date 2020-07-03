@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class CurrencyService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/currencies';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/currencies';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
