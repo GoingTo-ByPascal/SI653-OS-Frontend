@@ -11,7 +11,7 @@ import {map} from "rxjs/operators";
 export class TipService {
 
   tip: Tip=new Tip();
-  private urlEndPoint:string ='http://localhost:8080/api/tips';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/tips';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
@@ -27,7 +27,7 @@ export class TipService {
   }
 
   posttip():Observable<Tip>{
-    const url='http://localhost:8080/api/user_profiles/'
+    const url='https://goingto-open.azurewebsites.net/api/user_profiles/'
     return this.http.post<Tip>(url+this.tip.userId+`/locatables/`+this.tip.locatableId+`/tips`,this.tip);
   }
 

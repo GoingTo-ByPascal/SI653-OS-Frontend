@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class CategoryService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/categories';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/categories';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})

@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class UserService {
   userid:number=4;
-  private urlEndPoint:string ='http://localhost:8080/api/users';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/users';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})

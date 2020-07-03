@@ -25,7 +25,7 @@ export class CityService {
   }
 
   getAllCitiesByCountryId(countryid):Observable<City[]>{
-    const url='http://localhost:8080/api/countries'
+    const url='https://goingto-open.azurewebsites.net/api/countries'
     return this.http.get<City[]>(`${url}/`+countryid+`/cities`)
   }
 

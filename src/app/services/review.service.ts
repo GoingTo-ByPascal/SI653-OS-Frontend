@@ -12,36 +12,36 @@ export class ReviewService {
   public review :Review=new Review();
 
 
-  private urlEndPoint:string ='http://localhost:8080/api/reviews';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/reviews';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
 
   getreviewsbylocatableid(locatatableid):Observable<Review[]> {
 
-    const url ="http://localhost:8080/api/locatables/"
+    const url ="https://goingto-open.azurewebsites.net/api/locatables/"
     return this.http.get<Review[]>(`${url}/`+locatatableid+`/reviews`)
 
 
   }
 
   postreview():Observable<Review>{
-    const url ="http://localhost:8080/api/user_profiles/"
+    const url ="https://goingto-open.azurewebsites.net/api/user_profiles/"
     return this.http.post<Review>(url+this.review.userId+'/locatables/'+this.review.locatableId+'/reviews',this.review)
   }
 
   getreviewsbyprofileid(id):Observable<Review[]>{
-    const url ="http://localhost:8080/api/user_profiles/"
+    const url ="https://goingto-open.azurewebsites.net/api/user_profiles/"
     return this.http.get<Review[]>(url+id+'/reviews')
   }
 
   putreview():Observable<Review>{
-    const url ="http://localhost:8080/api/reviews/"
+    const url ="https://goingto-open.azurewebsites.net/api/reviews/"
     return this.http.put<Review>(url+this.review.id,this.review)
   }
   deletereview(id):Observable<Review>{
-    const url ="http://localhost:8080/api/reviews/"
-    return this.http.delete<Review>(url+id,{headers: this.httpHeaders})
+    const url ="https://goingto-open.azurewebsites.net/api/reviews/"
+    return this.http.delete<Review>(url+id)
   }
 
 

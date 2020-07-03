@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class LanguageService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/languages';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/languages';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})

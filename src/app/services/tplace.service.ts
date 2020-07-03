@@ -13,7 +13,7 @@ export class TplaceService {
 
   placeid:number;
 
-  private urlEndPoint:string ='http://localhost:8080/api/places';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/places';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
@@ -30,23 +30,23 @@ export class TplaceService {
   }
 
   getAllCitiesByPlaceId(cityid):Observable<Tplace[]>{
-    const url='http://localhost:8080/api/cities'
+    const url='https://goingto-open.azurewebsites.net/api/cities'
     return this.http.get<Tplace[]>(`${url}/`+cityid+`/places`)
   }
 
   Filtro(categoryid, cityid):Observable<Tplace[]>{
-    const url= 'http://localhost:8080/api/categories'
+    const url= 'https://goingto-open.azurewebsites.net/api/categories'
     return this.http.get<Tplace[]>(`${url}/`+categoryid+`/cities/`+cityid+`/places`)
 
   }
 
   getallplacesbycategoryid(categoryid):Observable<Tplace[]>{
-    const url= 'http://localhost:8080/api/categories'
+    const url= 'https://goingto-open.azurewebsites.net/api/categories'
     return this.http.get<Tplace[]>(`${url}/`+categoryid+`/places`)
   }
 
   getplacebylocatableid(locatableid):Observable<Tplace>{
-    const url= 'http://localhost:8080/api/locatables'
+    const url= 'https://goingto-open.azurewebsites.net/api/locatables'
     return this.http.get<Tplace>(`${url}/`+locatableid+`/places`)
   }
 

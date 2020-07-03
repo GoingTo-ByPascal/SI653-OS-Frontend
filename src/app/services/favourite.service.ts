@@ -11,7 +11,7 @@ import {Locatable} from "../model/locatable";
 
 export class FavouriteService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/favourites';
+  private urlEndPoint: string = 'https://goingto-open.azurewebsites.net/api/favourites';
   favourite: Favourite=new Favourite();
 
   constructor(private http: HttpClient) {
@@ -25,19 +25,19 @@ export class FavouriteService {
 
 
   getFavouritesbyuserid(userid): Observable<Favourite[]> {
-    const url = 'http://localhost:8080/api/users'
+    const url = 'https://goingto-open.azurewebsites.net/api/users'
     return this.http.get<Favourite[]>(`${url}/` + userid + `/favourites`)
   }
 
   save(): Observable<Favourite> {
-    const url = 'http://localhost:8080/api/users'
+    const url = 'https://goingto-open.azurewebsites.net/api/users'
 
     return this.http.post<Favourite>(`${url}/`+this.favourite.userId+`/locatables/`+this.favourite.locatableId, this.favourite,{headers:this.httpHeaders})
   }
 
   delete(locatableid): Observable<Favourite>
   {
-    return this.http.delete<Favourite>('http://localhost:8080/api/users/' + 4 + '/locatables/' + locatableid, {headers: this.httpHeaders});
+    return this.http.delete<Favourite>('https://goingto-open.azurewebsites.net/api/users/' + 4 + '/locatables/' + locatableid, {headers: this.httpHeaders});
   }
 
 }

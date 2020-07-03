@@ -10,7 +10,7 @@ import {map} from "rxjs/operators";
 
 export class ProfileService {
 
-  private urlEndPoint:string ='http://localhost:8080/api/user_profiles';
+  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/user_profiles';
   constructor(private http:HttpClient) { }
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
@@ -28,7 +28,7 @@ export class ProfileService {
 
 
   getUserprofilebyUserid(id:number):Observable<Profile>{
-    const url='http://localhost:8080/api/users'
+    const url='https://goingto-open.azurewebsites.net/api/users'
     return this.http.get<Profile>(`${url}/`+id+`/user_profiles`)
   }
 
