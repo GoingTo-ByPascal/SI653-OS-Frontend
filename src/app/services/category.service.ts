@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Category} from '../model/category';
-import {Observable, of} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,13 @@ import {map} from "rxjs/operators";
 
 export class CategoryService {
 
-  private urlEndPoint:string ='https://goingto-open.azurewebsites.net/api/categories';
-  constructor(private http:HttpClient) { }
+  private urlEndPoint = 'https://goingto-open.azurewebsites.net/api/categories';
+  constructor(private http: HttpClient) { }
 
-  private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  getCategories():Observable<Category[]> {
-    //return of(Categories);
+  getCategories(): Observable<Category[]> {
+    // return of(Categories);
     return this.http.get<Category[]>(this.urlEndPoint);
     /*
     return this.http.get(this.urlEndPoint).pipe(
