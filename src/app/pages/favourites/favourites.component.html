@@ -1,20 +1,22 @@
-<table>
-  <th style="position: relative; padding-top: 100px; padding-left: 800px">
-    <div class="card" style="width: 18rem;" align="center">
-      <div class="card-header"align="center">
+
+<div class="table" style="background-color: #ff5454; background-image: url(/assets/favs.jpg); height: 850px" >
+  <div class="container" style="border-color: black">
+  <th style="position: center; padding-top: 50px; padding-left: 250px" align="center">
+    <div class="card" style="width: 40rem;height: 200px; border-color: black" align="center" >
+      <div class="card-header"align="center" style="background-color: coral; color: white; border-color: black">
         Favourites
       </div>
-      <ul class="list-group list-group-flush" >
-        <li class="list-group-item" *ngFor="let locatable of locatable" routerLink="/place" (click)="click(locatable.id)">{{mostrarfavoritos(locatable.id)}}
+      <ul class="list-group list-group-flush" style="border-color: black">
+        <li class="list-group-item" style="border-color: black" *ngFor="let locatable of locatable" routerLink="/place" (click)="click(locatable.id)">{{mostrarfavoritos(locatable.id)}}
           <table>
             <th>{{tplace.name}} </th>
-            <th>| Stars:{{tplace.stars}}| </th>
-            <button (click)="delete(locatable.id)">Delete</button>
+            <th>| Stars: {{tplace.stars}}  | </th>
+            <button (click)="delete(locatable.id)" style="position:relative; top: 20px; left: 50px;width: 8rem; background-color:#F73D34; color: white">Delete</button>
           </table>
           <p>{{favourite.description}}</p>
         </li>
       </ul>
     </div>
   </th>
-
-</table>
+  </div>
+</div>

@@ -1,22 +1,22 @@
-<table align="center" style="position: relative; top:100px;">
+<table align="center" style="position: relative; top:100px">
 
-  <th style="padding-right: 200px">
+  <th style="padding-right: 300px">
     <tr>
 
         <div align="center" style="position: relative; bottom: 50px">
-          <img width="200px" height="200px" src="/assets/mapa.png" >
+          <img width="200px" height="200px" src="/assets/mapa.png">
         </div>
 
     </tr>
     <tr>
-      <label >Filter</label>
+      <label>Filter</label>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" style="background-color:orange; color: white" >Country:</label>
         </div>
         <select class="custom-select" (change)="resultadoscity($event)">
-          <option selected>Choose...</option>
+          <option selected>Select...</option>
           <option  value="1" *ngFor="let country of country" [value]="country.id" >{{country.fullName}}</option>
         </select>
       </div>
@@ -25,7 +25,7 @@
           <label class="input-group-text" style="background-color:orange; color: white" >City:</label>
         </div>
         <select class="custom-select"  (change)="resultados(); resultadosfiltrocity($event)">
-          <option selected>Choose...</option>
+          <option selected>Select...</option>
           <option  *ngFor="let city of city" [value]="city.id" >{{city.name}} </option>
 
         </select>
@@ -34,10 +34,10 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend" >
-          <label class="input-group-text" style="background-color:orange; color: white"  >Category:</label>
+          <label class="input-group-text" style="background-color:orange; color: white;"  >Category:</label>
         </div>
         <select class="custom-select"  (change)="resultados(); resultadosfiltrocategory($event)">
-          <option selected >Choose...</option>
+          <option selected >Select...</option>
           <option *ngFor="let category of category" [value]="category.id">{{category.name}}</option>
         </select>
       </div>
@@ -46,7 +46,7 @@
           <label class="input-group-text" style="background-color:orange; color: white">Language:</label>
         </div>
         <select class="custom-select" >
-          <option selected >Choose...</option>
+          <option selected >Select...</option>
           <option *ngFor="let language of language" value="1">{{language.fullName}}</option>
         </select>
       </div>
@@ -56,26 +56,26 @@
           <label class="input-group-text" style="background-color:orange; color: white">Currency:</label>
         </div>
         <select class="custom-select" >
-          <option selected >Choose...</option>
+          <option selected >Select...</option>
           <option *ngFor="let currency of currency" value="1">{{currency.unit}}</option>
         </select>
       </div>
 
       <label for="customRange3">Cost per day:</label>
-      <input style="position: relative; left: 20px" type="range" class="custom-range" min="0" max="200" step="10" id="customRange3">
+      <input style="position: relative; left: 10px" type="range" class="custom-range" min="0" max="200" step="10" id="customRange3">
 
     </tr>
   </th>
   <th>
-    <div class="card" style="width: 18rem; position: relative; bottom: 100px" >
-      <div class="card-header"align="center">
+    <div class="card" style="width: 18rem; background-color: #1DB426; color: aliceblue; position: relative; top: 100px" >
+      <div class="card-header"align="center" style="font-size: 30px">
         Results
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"  routerLink="/place" *ngFor=" let tplace of tplace" (click)="placeService.placeid = tplace.id">
+        <li class="list-group-item" style="color: black; background-color: #DAFF95"  routerLink="/place" *ngFor=" let tplace of tplace" (click)="placeService.placeid = tplace.id">
          <table>
-           <th>{{tplace.name}} </th>
-           <th>| Stars:{{tplace.stars}}</th>
+           <th>{{tplace.name}}</th>
+           <th>|Stars:{{tplace.stars}}</th>
          </table>
         </li>
       </ul>

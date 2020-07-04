@@ -5,7 +5,7 @@
       <th>
         <div align="center">
           <div>
-            <img width="120px" height="120px" src="/assets/perfil.jpg">
+            <img width="120px" height="120px" src="/assets/prof.png">
           </div>
           <h3>{{profile.name+' '+profile.surname}}</h3>
         </div>
@@ -20,14 +20,14 @@
       </th>
     </table>
     <div>
-      <button type="button" class="btn btn-dark">Edit</button>
+      <button type="button" class="btn btn-dark" style="background-color: cornflowerblue ; color: white">Edit</button>
     </div>
   </div>
 
 </div>
 <div style="padding-bottom: 100px;padding-top: 50px;" align="center">
-  <div class="card" style="width: 18rem; " align="center">
-    <div class="card-header">
+  <div class="card" style="width: 18rem"  align="center" >
+    <div class="card-header" style="background-color: orange">
       Achievements
     </div>
     <ul class="list-group list-group-flush">
@@ -39,10 +39,10 @@
   <h3>My reviews</h3>
 </div>
 {{loadreviews()}}
-<div style="padding-bottom: 100px;" align="center" *ngFor="let review of review">
+<div style="padding-bottom: 100px; background-color: lightgray" align="center" *ngFor="let review of review">
   {{mostrarplace(review.locatableId)}}
   <div class="card" style="width: 30rem;" >
-    <div class="card-header" align="left">
+    <div class="card-header" align="left" style="background-color: lightskyblue">
       <table>
         <tr >
           <p style="font-weight: bold;">{{profile.name+' '+profile.surname}}</p>
@@ -51,8 +51,8 @@
           <th>
             <p>{{place.name}}</p>
           </th>
-          <th style="position: relative;left: 150px">
-            <p>2 minutes ago</p>
+          <th style="position: relative;left: 20px">
+            <p>{{review.reviewedAt}}</p>
           </th>
         </tr>
       </table>
@@ -71,10 +71,10 @@
             </tr>
             <tr>
               <th>
-                <button type="button" class="btn btn-dark" style="position: relative;" (click)="modalref=modal.open(edit);getreview(review)">Edit</button>
+                <button type="button" class="btn btn-dark" style="position: relative; background-color: cornflowerblue ; color: white" (click)="modalref=modal.open(edit);getreview(review)">Edit</button>
               </th>
               <th>
-                <button type="button" class="btn btn-dark" style="position: relative;"  (click)="deletereview(review.id)" routerLink="/search">Delete</button>
+                <button type="button" class="btn btn-dark" style="position: relative; background-color:#F73D34; color: white"  (click)="deletereview(review.id)" routerLink="/search">Delete</button>
               </th>
             </tr>
           </table>
