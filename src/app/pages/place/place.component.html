@@ -1,8 +1,8 @@
 <div align="center" style="position: relative; padding-top: 50px; padding-bottom: 50px">
   <h1 style="font-weight: bold">{{place.name}}</h1>
-  <button type="button" class="btn btn-dark" (click)="modalref=modal.open(description)">{{button}}</button>
+  <button type="button" class="btn btn-dark" style="background-color: coral" (click)="modalref=modal.open(description)">{{button}}</button>
   <ng-template #description >
-    <div class="modal-header">
+    <div class="modal-header" style="background-color: coral">
       <h5 class="modal-title">Add Favourite</h5>
     </div>
     <div class="modal-body">
@@ -30,14 +30,14 @@
       </div>
     </div>
     <div class="modal-footer" align="center">
-      <button type="button" class="btn btn-light" (click)="post();modalref.close()">Post</button>
+      <button type="button" style="background-color: cornflowerblue" class="btn btn-light" (click)="post();modalref.close()">Post</button>
     </div>
   </ng-template>
 </div>
 <table>
   <th>
-    <div class="card" style="width: 18rem; position: relative; right: 70px" >
-      <div class="card-header"align="center">
+    <div class="card" style="width: 18rem; position: relative; right: 10px" >
+      <div class="card-header"align="center" >
         Related
       </div>
       <ul class="list-group list-group-flush">
@@ -51,14 +51,14 @@
       </ul>
     </div>
   </th>
-  <th>
+  <th style=" width: 1100px">
     <tr>
       <label>Description</label>
       <li class="list-group-item">{{locatable.description}}</li>
     </tr>
     <tr>
-      <div style="position: relative; top: 50px;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
+      <div style="position: relative; top: 50px;"  id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" >
           <div class="carousel-item active">
             <img src="/assets/mp1.jpg" class="d-block w-100" alt="...">
           </div>
@@ -79,12 +79,12 @@
   </th>
   <th>
     <div class="card" style="width: 18rem; position: relative; left:70px">
-      <div class="card-header"align="center">
+      <div class="card-header"align="center" style="background-color: cornflowerblue">
         Tips
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item" *ngFor="let tip of tip" >{{tip.text}}</li>
-        <button type="button" class="btn btn-dark" (click)="modalref=modal.open(tipmodal)">Create</button>
+        <button type="button" class="btn btn-dark" style="background-color: cornflowerblue" (click)="modalref=modal.open(tipmodal)">Create</button>
         <ng-template #tipmodal >
           <div class="modal-header">
             <h5 class="modal-title">New Tip</h5>
@@ -130,10 +130,10 @@
 <div align="center" style="position: relative;padding-bottom: 100px">
   <div align="center">
     <h1 style="font-weight: bold" >Reviews</h1>
-    <button type="button" class="btn btn-dark" (click)="modalref=modal.open(template)">Post</button>
+    <button type="button" class="btn btn-dark" style="background-color: cornflowerblue" (click)="modalref=modal.open(template)">Post</button>
     <!--MODAL-->
     <ng-template #template >
-      <div class="modal-header">
+      <div class="modal-header" style="background-color: cornflowerblue">
         <h5 class="modal-title">New Review</h5>
       </div>
       <div class="modal-body">
@@ -165,14 +165,14 @@
           </ul>
         </div>
       </div>
-      <div class="modal-footer" align="center">
-        <button type="button" class="btn btn-light" (click)="postreview();modalref.close()">Post</button>
+      <div class="modal-footer" align="center" style="background-color: cornflowerblue">
+        <button type="button" class="btn btn-light"  (click)="postreview();modalref.close()">Post</button>
       </div>
     </ng-template>
   </div>
 
   <div class="card" style="width: 30rem;position: relative; margin-top: 50px;margin-bottom: 50px" *ngFor="let review of review">{{mostrarreviews(review.userId)}}
-    <div class="card-header" align="left">
+    <div class="card-header" align="left" style="background-color: lightskyblue">
       <table>
         <tr >
           <p style="font-weight: bold;">{{profile.name+' '+profile.surname}}</p>
@@ -181,8 +181,8 @@
           <th>
             <p>{{place.name}}</p>
           </th>
-          <th style="position: relative;left: 150px">
-            <p>2m</p>
+          <th style="position: relative;left: 110px">
+            <p >{{review.reviewedAt}}</p>
           </th>
         </tr>
       </table>
